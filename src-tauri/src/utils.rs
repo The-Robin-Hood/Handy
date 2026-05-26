@@ -1,7 +1,7 @@
 use crate::managers::audio::AudioRecordingManager;
 use crate::managers::transcription::TranscriptionManager;
 use crate::shortcut;
-use crate::status::{ActivityStatus, StatusManager, set_status_safe};
+use crate::status::{ActivityStatus, set_status_safe};
 use crate::TranscriptionCoordinator;
 use log::info;
 use std::sync::Arc;
