@@ -19,6 +19,7 @@ mod transcription_coordinator;
 mod tray;
 mod tray_i18n;
 mod utils;
+mod status;
 
 pub use cli::CliArgs;
 #[cfg(debug_assertions)]
@@ -165,6 +166,10 @@ fn initialize_core_logic(app_handle: &AppHandle) {
     app_handle.manage(transcription_manager.clone());
     app_handle.manage(history_manager.clone());
 
+    let status_manager = status::StatusManager::new();
+    app_handle.manage(status_manager.clone());
+    status::start_server(status_manager);
+    
     // Note: Shortcuts are NOT initialized here.
     // The frontend is responsible for calling the `initialize_shortcuts` command
     // after permissions are confirmed (on macOS) or after onboarding completes.
